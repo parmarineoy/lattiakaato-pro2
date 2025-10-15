@@ -71,3 +71,21 @@ class Config:
     thr_k_min: float
     split_lines: List[SplitLine]
     layers_m: float
+def main():
+    st.title("Lattiakaadon tarkistus")
+    st.write("Tämä sovellus laskee lattiakaadon ja tarkistaa määräysten mukaisuuden.")
+
+    # Esimerkki syötteistä
+    L = st.number_input("Lattian pituus (m)", min_value=0.0, value=2.0)
+    W = st.number_input("Lattian leveys (m)", min_value=0.0, value=1.2)
+    grid = st.number_input("Laskentaruudukon koko (m)", min_value=0.01, value=0.1)
+
+    step_mm = st.number_input("Kaadotason askel (mm)", min_value=0.1, value=1.0)
+    k_s_min = st.number_input("Suihkualueen minimikaato (%)", min_value=0.0, value=1.0)
+    k_o_min = st.number_input("Muun alueen minimikaato (%)", min_value=0.0, value=0.5)
+
+    st.write(f"Syötetty koko: {L} m × {W} m, ruudukko: {grid} m")
+    st.write(f"Kaadot: suihkualue {k_s_min} %, muu alue {k_o_min} %")
+
+if __name__ == "__main__":
+    main()
